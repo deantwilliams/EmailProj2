@@ -1,0 +1,39 @@
+<%- include("header",{title:"Deleted"}) %>
+<%- include("leftBar",{inbox: inboxTotal }) %>
+<div class="content-right">
+    <%
+    let options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    };
+    %>
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>FROM</th>
+            <th>SUBJECT</th>
+            <th>DATE RECEIVED</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var i=0;i<del_emails.length;i++) { %>
+            <tr>
+                <td><input type="checkbox" class="form-check-input" id="<%= del_emails[i]._id %>"></td>
+                <td><%= del_emails[i].from %></td>
+                <td><%= del_emails[i].subject %></td>
+                <td><%= del_emails[i].date.toLocaleDateString("en-gb",options) %></td>
+                <td><button type="button" onclick="viewModal(<%= i %>)">View</button></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<%- include("header",{title:"Compose,inbox: inboxTotal"})%>
+<%- include("leftBar") %>
+<div class="content-right">
+    <form action="/newEmail" method="post">
+        <div class="form-group">
+            <label for="email_to">To: </label>
+            <input type="text" class="form-control" id="email_to" name="email_to">
+        </div>
+        <div class="form-group">
+            <label for="email_subject">Subject: </label>
+            <input type="text" class="form-control" id="email_subject" name="email_subject">
+        </div>
+        <div class="form-group">
+            <label for="email_content">Body: </label>
+            <textarea class="form-control" rows="8" id="email_content" name="email_content"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="email_draft">Draft? </label>
+            <input type="checkbox" class="form-check-input" name="email_draft" id="email_draft">
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
+</body>
+</html>

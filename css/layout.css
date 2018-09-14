@@ -1,0 +1,84 @@
+#nav
+{
+    border: 1px solid black;
+    margin: 2%;
+    padding: 10px;
+    float:left;
+    width: 96%;
+    display: inline-block;
+    line-height: 30px;
+}
+
+#login
+{
+    margin: auto;
+    width: 25%;
+    border: 3px solid blue;
+    padding: 10px;
+    text-align:center;
+}
+
+.title
+{
+    float:left;
+    padding: 5px;
+    font-size: 30px;
+}
+
+.logout
+{
+    float:right;
+    padding: 5px;
+    vertical-align:middle;
+}
+
+.content-right
+{
+    border: 1px solid black;
+    margin: 0 2%;
+    padding: 10px;
+    float:right;
+    width: 76%;
+    display: inline-block;
+}
+
+.content-left
+{
+    border: 1px solid black;
+    margin: 0 2%;
+    padding: 10px;
+    float:left;
+    width: 14%;
+    display: inline-block;
+    text-align:center;
+}
+
+.content-center
+{
+    border: 1px solid black;
+    margin: 0 2%;
+    padding: 10px;
+    float:left;
+    width: 96%;
+    display: inline-block;
+    text-align:center;
+}
+
+textarea
+{
+    resize:none;
+}
+
+td, th {
+    text-align: center; /* center checkbox horizontally */
+    vertical-align: middle; /* center checkbox vertically */
+    line-height: 30px;
+}
+
+.inbox_img
+{
+    height: 30px;
+    width: 30px;
+    padding: 2px;
+    margin: 2px;
+}

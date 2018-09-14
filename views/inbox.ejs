@@ -1,0 +1,77 @@
+<%- include("header",{title:"Inbox"}) %>
+<%- include("leftBar",{inbox: inboxTotal }) %>
+    <div class="content-right">
+        <%
+        let options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>FROM</th>
+                    <th>SUBJECT</th>
+                    <th>DATE RECEIVED</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0;i<emails.length;i++) { %>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input" id="<%= emails[i]._id %>"></td>
+                            <td><%= emails[i].from %></td>
+                            <td><%= emails[i].subject %></td>
+                            <td><%= emails[i].date.toLocaleDateString("en-gb",options) %></td>
+                            <td><button type="button" onclick="viewModal(<%= i %>)">View</button> | <a href="/delete?id=<%= emails[i]._id%>"><img class="inbox_img" src="../images/bin.png"></a></td>
+                        </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+            function viewModal(id){
+                let email = <%- JSON.stringify(emails) %>
+                $('#from').val(email[id].from);
+                $('#subject').val(email[id].subject);
+                $('#content').val(email[id].content);
+                $('#viewModal').modal({
+                    show: true,
+                    backdrop: true
+                });
+            }
+    </script>
+
+    <div id="viewModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form action="/reply" method="post">
+                        <div class="form-group">
+                            <label for="from">From: </label>
+                            <input type="text" class="form-control" id="from" name="from" disabled readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject: </label>
+                            <input type="text" class="form-control" id="subject" name="subject" disabled readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Body: </label>
+                            <textarea class="form-control" rows="8" id="content" name="content" disabled readonly></textarea>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Reply</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
